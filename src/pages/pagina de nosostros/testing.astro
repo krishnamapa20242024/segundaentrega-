@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Pruebas Funcionales y Contenido Completo";
+---
+
+<BaseLayout title={pageTitle}>
+    <section id="inicio" class="page-section active p-8 bg-gray-100 rounded-xl shadow-lg border-t-4 border-purple-600">
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">🔬 Modo de Pruebas Funcionales</h1>
+        <p class="text-xl text-gray-700 mb-6">
+            Esta página se enfoca en verificar la funcionalidad de la navegación dinámica (cambio de sección)
+            y el sistema de visualización de artículos del blog, utilizando la misma lógica del `BaseLayout`.
+        </p>
+        <p class="text-lg text-purple-700 font-semibold mb-6">
+            Intenta hacer clic en "Recuerdos" y luego en "Leer recuerdo" para confirmar la inyección de contenido.
+        </p>
+        <div class="flex space-x-4">
+            <button onclick="showPage('blog')" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-md text-white bg-purple-600 hover:bg-purple-700 transition duration-150">
+                Ir a Recuerdos (Blog)
+            </button>
+            <button onclick="showPage('nosotros')" class="inline-flex items-center px-4 py-2 border border-purple-600 text-base font-medium rounded-md text-purple-600 bg-white hover:bg-purple-50 transition duration-150">
+                Ver Biografía
+            </button>
+        </div>
+    </section>
+    <section id="nosotros" class="page-section hidden p-8 bg-white rounded-xl shadow-lg border-t-4 border-indigo-600">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2">Un Padre, un Esposo, un Guerrero</h2>
+
+        <div class="grid md:grid-cols-3 gap-8 items-start">
+            <div class="md:col-span-1">
+                <div class="bg-indigo-50 border-4 border-indigo-200 p-4 rounded-xl text-center shadow-inner">
+                    <img
+                            src="https://placehold.co/400x400/818cf8/ffffff?text=FOTO+DE+MARCOS"
+                            alt="Imagen de perfil de Marcos"
+                            class="w-full h-auto rounded-lg shadow-lg mb-4 object-cover"
+                    />
+                    <p class="text-sm font-semibold text-indigo-700">Marcos Erasmo Mario Rodriguez (1975 - 2025)</p>
+                </div>
+            </div>
+            <div class="md:col-span-2 text-gray-700 leading-relaxed">
+                <p class="mb-4 text-xl font-medium text-indigo-800">
+                    Marcos fue, ante todo, el pilar de su familia y un hombre forjado por el mar y la fe. Su vida fue un testimonio de perseverancia, desde las frías aguas de Chiloé hasta la calidez de su hogar.
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-900 mt-6 mb-3">La Familia: Su Mayor Tesoro</h3>
+                <p class="mb-4">
+                    Junto a Laura, su incondicional "Mercedes", construyó un hogar lleno de amor, humor y valores. Su mayor orgullo fue ver a sus hijos crecer y a sus nietos (Dylan, Benjamín, Isabella y Jaimir) llenarlo de alegría, un rol que él describía como su vocación preferida: "niñero".
+                </p>
+
+                <h3 class="text-2xl font-bold text-gray-900 mt-6 mb-3">Trayectoria de un Trabajador</h3>
+                <ul class="list-disc ml-6 space-y-2">
+                    <li>**Servicio Militar:** 10 meses en Chaitén que le otorgaron la disciplina y la fortaleza que lo caracterizaron.</li>
+                    <li>**Pescador Artesanal:** Su vida ligada al mar, donde demostró liderazgo en el sindicato y una valentía inquebrantable (ej. el naufragio en Punta Bruja).</li>
+                    <li>**Carpintero y Director de Obra:** Su última pasión, donde el "casco blanco" simbolizaba su dedicación y orden en cada proyecto.</li>
+                </ul>
+
+                <p class="italic mt-8 border-t pt-4 text-sm text-gray-600">
+                    Recordamos a Marcos por su risa contagiosa, su espíritu de fiesta y la certeza de que su amor incondicional nos guía desde el cielo.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="blog" class="page-section hidden p-8 bg-white rounded-xl shadow-lg border-t-4 border-yellow-600">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2">Recuerdos Compartidos (Vista de Prueba)</h2>
+        <p class="text-lg text-gray-600 mb-8">Historias que definieron a un hombre y un legado de alegría y esfuerzo.</p>
+
+        <div id="blog-list-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <p class="text-center md:col-span-3 text-gray-500">Cargando artículos...</p>
+        </div>
+    </section>
+    <section id="article-detail" class="page-section hidden p-8 bg-white rounded-xl shadow-lg border-t-4 border-yellow-600">
+        <button onclick="showPage('blog')" class="text-yellow-600 hover:text-yellow-800 flex items-center mb-6 font-medium transition duration-150">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Volver a Recuerdos
+        </button>
+
+        <h1 id="article-title" class="text-4xl font-extrabold text-gray-900 mb-4">Título del Recuerdo</h1>
+        <div class="flex items-center text-sm text-gray-500 mb-6 space-x-4">
+            <span id="article-date" class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Fecha
+            </span>
+            <span id="article-category" class="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Categoría</span>
+        </div>
+
+        <div id="article-content" class="text-gray-700 leading-loose">
+        </div>
+    </section>
+    <section id="contacto" class="page-section hidden p-8 bg-white rounded-xl shadow-lg border-t-4 border-red-600">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6 border-b pb-2">📞 Dejar un Mensaje / Contacto Familiar</h2>
+
+        <p class="text-lg text-gray-700 mb-8">Si desea compartir un recuerdo o enviar sus condolencias, por favor, use el siguiente formulario. La familia leerá cada mensaje.</p>
+
+        <div class="md:flex md:space-x-8">
+
+            <div class="md:w-2/3 bg-gray-50 p-6 rounded-lg shadow-md">
+                <form onsubmit="event.preventDefault(); showMessage('Mensaje enviado. Gracias por compartir su recuerdo con la familia.')">
+                    <div class="mb-4">
+                        <label for="c-name" class="block text-sm font-medium text-gray-700">Tu Nombre</label>
+                        <input type="text" id="c-name" name="name" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-red-500 focus:border-red-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="c-message" class="block text-sm font-medium text-gray-700">Tu Mensaje</label>
+                        <textarea id="c-message" name="message" rows="4" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring-red-500 focus:border-red-500"></textarea>
+                    </div>
+                    <button type="submit" class="w-full inline-flex justify-center py-3 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 transition duration-150">
+                        Enviar Mensaje
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</BaseLayout>

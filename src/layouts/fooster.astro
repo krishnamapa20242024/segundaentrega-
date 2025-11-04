@@ -1,0 +1,33 @@
+---
+const currentYear = new Date().getFullYear();
+---
+<footer class="bg-gray-800 text-white mt-12">
+    <div class="container mx-auto px-4 py-8">
+
+        <div class="flex flex-col md:flex-row justify-between items-center md:items-start text-center md:text-left border-b border-gray-700 pb-6 mb-6">
+
+            <div class="md:w-1/3 mb-4 md:mb-0">
+                <h4 class="text-xl font-semibold mb-2 text-indigo-400">Marcos: Alma de Niño & Capitán</h4>
+                <p class="text-gray-400 text-sm">
+                    "Su legado no es una fecha, sino una forma de vida."
+                </p>
+            </div>
+
+            <div class="md:w-1/3 flex justify-center space-x-8">
+                <div class="flex flex-col space-y-2">
+                    <a href="/biografia" class="text-gray-300 hover:text-indigo-400 transition duration-150 text-sm">Biografía</a>
+                    <a href="/blog" class="text-gray-300 hover:text-indigo-400 transition duration-150 text-sm">Recuerdos</a>
+                </div>
+                <div class="flex flex-col space-y-2">
+                    <a href="/contacto" class="text-gray-300 hover:text-indigo-400 transition duration-150 text-sm">Contacto</a>
+                    <a href="/privacidad" class="text-gray-300 hover:text-indigo-400 transition duration-150 text-sm">Aviso Legal</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center text-gray-500 text-sm pt-4">
+            &copy; {currentYear} Memoria de Marcos. Todos los derechos reservados.
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import BlogCard from '../components/BlogCard.astro';
+import articulos from '../data/articulos.json';
+
+const sortedArticulos = articulos.sort((a, b) => b.id - a.id);
+---
+<Layout title="Recuerdos - Blog de Marcos">
+    <section class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-yellow-600">
+        <SectionTitle
+                title="✨ Recuerdos Compartidos y Anécdotas"
+                subtitle="Historias que definieron a un hombre y un legado de alegría y esfuerzo."
+                borderColor="border-yellow-600"
+        />
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {sortedArticulos.map((article) => (
+                    <BlogCard article={article} />
+            ))}
+        </div>
+    </section>
+</Layout>

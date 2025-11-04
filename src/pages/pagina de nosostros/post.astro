@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const articles = [
+    {
+        id: 1,
+        title: "La Fuerza y la Fe en el Servicio Militar",
+        date: "24 de Noviembre, 2025",
+        summary: "Recordamos los 10 meses en Chaitén, forjando el carácter de un hombre de fe y disciplina.",
+        category: "Juventud",
+        content: `
+                <p>El regimiento de infantería 26 Bulnes en Chaitén fue un periodo definitorio en la vida de Marcos. Aunque solo fueron 10 meses, la experiencia del servicio militar le inculcó una disciplina y una fortaleza que aplicó a lo largo de toda su vida familiar y laboral.</p>
+                <p>En este periodo, no solo aprendió sobre jerarquías y trabajo en equipo, sino que afianzó los valores que lo hacían un hombre respetuoso y comprometido. Su capacidad para enfrentar desafíos, desde las duras condiciones climáticas hasta las exigencias físicas, se convirtió en una constante en su personalidad.</p>
+                <h3>Un Regreso Transformador</h3>
+                <p>Al regresar, esa disciplina le permitió enfocarse en construir un hogar con Laura, su esposa. La constancia que demostró en Chaitén fue la misma constancia que puso en cada uno de sus emprendimientos laborales.</p>
+                <p>Este recuerdo es un testimonio de cómo la juventud marca el camino y de cómo Marcos supo tomar lo mejor de cada experiencia para ser un pilar para su familia.</p>
+            `
+    },
+];
+
+const article = articles.find(a => a.id === 1);
+
+if (!article) {
+    return new Response(null, {
+        status: 404,
+        statusText: 'Not found'
+    });
+}
+
+const pageTitle = article.title;
+---
+
+<BaseLayout title={pageTitle}>
+    <section class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-yellow-600">
+
+        <a href="/#blog" class="text-yellow-600 hover:text-yellow-800 flex items-center mb-6 font-medium transition duration-150">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            Volver a Recuerdos
+        </a>
+
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">{article.title}</h1>
+        <div class="flex items-center text-sm text-gray-500 mb-6 space-x-4">
+            <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                {article.date}
+            </span>
+            <span class="px-2 py-0.5 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">{article.category}</span>
+        </div>
+
+        <div id="article-content" class="text-gray-700 leading-loose" set:html={article.content} />
+
+    </section>
+</BaseLayout>

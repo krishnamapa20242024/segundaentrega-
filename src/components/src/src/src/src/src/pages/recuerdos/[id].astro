@@ -1,0 +1,65 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import articulos from '../../data/articulos.json';
+
+export async function getStaticPaths() {
+    return articulos.map((article) => {
+        return {
+            params: { id: article.id.toString() },
+            props: { article: article }
+        };
+    });
+}
+
+const { article } = Astro.props;
+
+const categoryColors = {
+    'Juventud': 'bg-blue-100 text-blue-700',
+    'Trabajo': 'bg-green-100 text-green-700',
+    'Familia': 'bg-pink-100 text-pink-700',
+    'Homenaje': 'bg-indigo-100 text-indigo-700',
+    'default': 'bg-yellow-100 text-yellow-700'
+}
+const categoryClass = categoryColors[article.category] || categoryColors['default'];
+---
+<Layout title={article.title}>
+    <section class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-yellow-600">
+        <a href="/recuerdos" class="text-yellow-600 hover:text-yellow-800 flex items-center mb-6 font-medium transition duration-150">
+            <svg class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" /></svg>
+            Volver a Recuerdos
+        </a>
+        <h1 class="text-4xl font-extrabold text-gray-900 mb-4">{article.title}</h1>
+        <div class="flex items-center text-sm text-gray-500 mb-6 space-x-4">
+ 			 	<span class="flex items-center">
+ 				 	<svg class="h-4 w-4 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                    {article.date}
+ 			 	</span>
+            <span class:list={["px-2 py-0.5 text-xs font-semibold rounded-full", categoryClass]}>
+ 				 	{article.category}
+ 			 	</span>
+        </div>
+        <div class="text-gray-700 leading-loose article-content" set:html={article.content}>
+        </div>
+    </section>
+</Layout>
+
+<style is:global>
+    .article-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #1e3a8a; /* blue-900 */
+    }
+    .article-content p {
+        line-height: 1.75;
+        margin-bottom: 1rem;
+    }
+    .article-content img {
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        border: 4px solid #fcd34d; /* border-yellow-400 */
+    }
+</style>

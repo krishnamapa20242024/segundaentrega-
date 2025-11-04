@@ -1,0 +1,58 @@
+---
+// src/pages/biografia.astro
+import Layout from '../layouts/Layout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+// Mueve tu imagen de nietos a 'public/img/marcos-nietos.jpg'
+const bioImage = "/img/marcos-nietos.jpg";
+---
+<Layout title="Biografía de Marcos - Homenaje">
+    <section class="p-8 bg-white rounded-xl shadow-lg border-t-4 border-green-600">
+        <SectionTitle
+                title="👥 Marcos Erasmo Mario Rodriguez: La Leyenda"
+                subtitle="Hijo de María Mirta Rodriguez Ruiz y Raimundo Mario Paillan."
+                borderColor="border-green-600"
+        />
+        <div class="space-y-6 text-gray-700 article-content">
+            <p>Nació el <strong>24 de noviembre del año 1975</strong>...</p>
+            <p>En su adolescencia, fue un colaborador activo de la iglesia...</p>
+            <p>Luego tuvo que cumplir con su servicio militar...</p>
+            <p>Así mismo, él continuó su vida laboral...</p>
+
+            <h3>⚽ El Corazón del Club Villa El Lago</h3>
+            <p>Sus domingos eran sagrados...</p>
+            <p>Pasado nueve años, nace su último hijo...</p>
+
+            <h3>👨‍👩‍👧‍👦 Un Gran Corazón para sus Ahijados y Sobrinos</h3>
+            <p>También tenía 4 ahijados: <strong>Barbara, Elsita, Bryan y Pablito</strong>...</p>
+
+            <h3>👴 El Abuelo y el Carpintero (con su Casco Blanco)</h3>
+            <div class="mt-6 mb-6 flex justify-center">
+                <img src={bioImage} alt="Marcos con sus nietos" class="rounded-lg shadow-xl max-w-full md:max-w-lg border-4 border-green-400"/>
+            </div>
+            <p>Los últimos años tuvo la dicha de ser abuelo...</p>
+            <p>Nos sacaba carcajadas de risa con sus imitaciones...</p>
+
+            <h3>❤️ El Alma de la Fiesta y su Gran Legado</h3>
+            <p>Siempre fue el alma de la fiesta...</p>
+            <p>Siempre fue un hombre perseverante...</p>
+
+            <div class="mt-8 pt-6 border-t-2 border-green-200">
+                <p class="text-xl font-bold text-center text-gray-900 mb-2">Un Vuelo Alto, Un Hasta Siempre</p>
+                <p class="italic text-center text-lg leading-relaxed text-gray-800">
+                    <strong>Este no es un adiós sino un hasta siempre.</strong>...
+                </p>
+            </div>
+        </div>
+    </section>
+</Layout>
+<style>
+    /* Estilos para los H3 de la biografía */
+    .article-content h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-top: 1.5rem;
+        padding-bottom: 0.5rem;
+        color: #047857; /* green-700 */
+        border-bottom: 1px solid #d1fae5;
+    }
+</style>
